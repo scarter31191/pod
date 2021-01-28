@@ -1,7 +1,9 @@
 <h1>Topics</h1>
 
+<ul>
   <% @topics.each do |topic| %>
     <li>
-      <%= topic.title %>
+      <%= link_to topic.title, topic %>
     </li>
   <% end %>
+</ul>
