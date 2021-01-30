@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_022345) do
+ActiveRecord::Schema.define(version: 2021_01_30_023739) do
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string "title"
+    t.string "platfrom"
+    t.string "host"
+    t.datetime "schedule"
+    t.text "description"
+    t.string "genre"
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string "title"
@@ -25,6 +38,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_022345) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
 end

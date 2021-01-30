@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def index
-
+        # byebug
     end
 
     def show
