@@ -46,6 +46,6 @@ class PodcastsController < ApplicationController
     private
 
     def podcast_params
-        params.require(:podcast).permit(:title, :platfrom, :host, :schedule, :description, :genre)
+        params.require(:podcast).permit(:title, :platform, :host, :schedule, :description, :genre)
     end
 end
