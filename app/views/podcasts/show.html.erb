@@ -1,0 +1,11 @@
+<h1><%= @podcast.title %></h1>
+<h2><%= @podcast.host %></h2>
+<h3><%= @podcast.schedule %></h3><br>
+
+<ul>
+  <li><%= link_to "Edit", edit_podcast_path(@podcast) %></li>
+  <li><%= link_to "Destroy", podcast_path(@podcast),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+    <li><%= link_to "All Podcasts", podcasts_path %></li>
+</ul>

@@ -1,0 +1,42 @@
+<h1>New Podcast</h1>
+
+<%= form_for(@podcast) do |f| %>
+
+  <ul>
+    <div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :platfrom %><br>
+      <%= f.text_field :platfrom %>
+    <div>
+
+    <div>
+      <%= f.label :host %><br>
+      <%= f.text_field :host %>
+    <div>
+
+    <div>
+      <%= f.label :schedule %><br>
+      <%= f.datetime_local_field :schedule %>
+    <div>
+
+    <div>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    <div>
+
+    <div>
+      <%= f.label :genre %><br>
+      <%= f.text_field :genre %>
+    <div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </ul>
+<% end %>
+
+<li><%= link_to "All Podcasts", podcasts_path %></li>
