@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         # byebug
         if user.save
             session[:user_id] = user.id
-            redirect_to users_path
+            redirect_to user_path(user.id)
         else
             flash[:message] = user.errors.full_messages.join(", ")
             redirect_to root_path

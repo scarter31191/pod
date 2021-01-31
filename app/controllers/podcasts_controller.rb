@@ -9,7 +9,7 @@ class PodcastsController < ApplicationController
     end
 
     def create
-        @podcast = Podcast.new(podcast_params)
+        @podcast = current_user.podcasts.build(podcast_params)
 
         if @podcast.save
             redirect_to podcast_path(@podcast)

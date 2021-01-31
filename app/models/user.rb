@@ -4,6 +4,9 @@ class User < ApplicationRecord
     validates :username, presence: true
     validates :username, :email,  uniqueness: true
 
+    has_many :podcasts
+    has_many :topics, through: :podcasts
+
     def self.create_from_omniauth(auth)
             User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             u.username = auth['info']['first_name']
