@@ -1,7 +1,11 @@
 <h1><%= @podcast.title %></h1>
 <h2><%= @podcast.host %></h2>
 <h3><%= @podcast.description %></h3>
-<h4><%= @podcast.schedule %></h4><br>
+<h4><%= @podcast.schedule %></h4><br><br>
+
+<h1><%= @podcast.topic.title %></h1>
+<h2><%= @podcast.topic.body %></h1>
+
 
 <ul>
   <li><%= link_to "Edit", edit_podcast_path(@podcast) %></li>
