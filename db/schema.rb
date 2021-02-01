@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_140546) do
+ActiveRecord::Schema.define(version: 2021_02_01_152517) do
 
   create_table "podcasts", force: :cascade do |t|
     t.string "title"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2021_01_30_140546) do
     t.datetime "schedule"
     t.text "description"
     t.string "genre"
-    t.integer "user_id"
-    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "topic_id"
   end
 
   create_table "topics", force: :cascade do |t|

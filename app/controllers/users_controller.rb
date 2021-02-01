@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+        # byebug
     end
 
     #loading signup page

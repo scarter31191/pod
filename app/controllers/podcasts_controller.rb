@@ -6,11 +6,13 @@ class PodcastsController < ApplicationController
 
     def new
         @podcast = Podcast.new
+        @podcast.build_topic
     end
 
     def create
+        # byebug
         @podcast = current_user.podcasts.build(podcast_params)
-
+        # byebug
         if @podcast.save
             redirect_to podcast_path(@podcast)
         else
@@ -19,6 +21,7 @@ class PodcastsController < ApplicationController
     end
 
     def show
+        
         @podcast = Podcast.find(params[:id])
     end
 
@@ -46,6 +49,6 @@ class PodcastsController < ApplicationController
     private
 
     def podcast_params
-        params.require(:podcast).permit(:title, :platform, :host, :schedule, :description, :genre)
+        params.require(:podcast).permit(:title, :platform, :host, :schedule, :description, :genre, :user_id, :topic_id, topic_attributes: [:title, :body])
     end
 end

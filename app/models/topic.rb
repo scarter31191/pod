@@ -4,4 +4,5 @@ class Topic < ApplicationRecord
 
     has_many :podcasts
     has_many :users, through: :podcasts
+
 end
