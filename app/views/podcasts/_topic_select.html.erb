@@ -1,0 +1,20 @@
+<div>
+      <%= f.label :topic, "Select Topic" %><br>
+      <%= f.collection_select :topic_id, Topic.all, :id, :title, prompt: true %>
+    <div>
+
+    <div>
+      <h3>Create Topic:</h3>
+        <%= f.fields_for :topic, Topic.new do |topic_attributes|%>
+        <div>
+          <%= topic_attributes.label :title, "Title:" %><br>
+          <%= topic_attributes.text_field :title %>
+        </div>
+
+        <div>
+          <%= topic_attributes.label :body, "Body:" %><br>
+          <%= topic_attributes.text_area :body %>
+        </div>
+
+        <% end %>
+    </div>

@@ -13,11 +13,14 @@
   </div>
 <% end %>
 
-<h1>New Podcast</h1>
+<%= display_nested_header%>
 
 <%= form_for(@podcast) do |f| %>
-
+  
   <ul>
+    <div>
+      <%= display_topic_fields(f) %>
+    </div>
     <div>
       <%= f.label :title %><br>
       <%= f.text_field :title %>
@@ -48,29 +51,6 @@
       <%= f.text_field :genre %>
     <div>
 
-    <br><br>
-
-    <div>
-      <%= f.label :topic, "Select Topic" %><br>
-      <%= f.collection_select :topic_id, Topic.all, :id, :title, prompt: true %>
-    <div>
-
-    <div>
-      <h3>Create Topic:</h3>
-        <%= f.fields_for :topic, Topic.new do |topic_attributes|%>
-        <div>
-          <%= topic_attributes.label :title, "Title:" %><br>
-          <%= topic_attributes.text_field :title %>
-        </div>
-
-        <div>
-          <%= topic_attributes.label :body, "Body:" %><br>
-          <%= topic_attributes.text_area :body %>
-        </div>
-
-        <% end %>
-    </div>
-
     <div>
       <%= f.submit %>
     </div>
@@ -78,4 +58,4 @@
 <% end %>
 
 <li><%= link_to "All Podcasts", podcasts_path %></li>
-<li><%= link_to "Home", user_path(@user) %></li>
+<%# <li><%= link_to "Home", user_path(@user) %>

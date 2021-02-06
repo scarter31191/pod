@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
-    # before_action :redirect_if_not_logged_in
-    # before_action :find_user, only: [:show, :edit, :update, :destroy, :create]
+    before_action :find_podcast, :redirect_if_not_logged_in, only: [:show, :update, :edit, :destroy]
+    
 
     def index
         if params[:topic_id] && @topic = Topic.find_by_id(params[:topic_id])
@@ -11,13 +11,20 @@ class PodcastsController < ApplicationController
     end
 
     def new
-        @podcast = Podcast.new
-        @podcast.build_topic
-        @user = current_user
+        if params[:topic_id] && @topic = Topic.find_by_id(params[:topic_id])
+            @podcast = @topic.podcasts.build
+            byebug
+        else
+            @podcast = Podcast.new
+            @podcast.build_topic
+            # @user = current_user
+        end
     end
 
     def create
-        @user = current_user
+        byebug
+        @podcast = Podcast.new(podcast_params)
+        # @user = current_user
         @podcast = current_user.podcasts.build(podcast_params)
         # byebug
         if @podcast.save
@@ -55,9 +62,9 @@ class PodcastsController < ApplicationController
 
     private
 
-    # def find_user
-    #     @user = current_user.id
-    # end
+    def find_podcast
+        @podcast = Podcast.find(params[:id])
+    end
 
     def podcast_params
         params.require(:podcast).permit(:title, :platform, :host, :schedule, :description, :genre, :user_id, :topic_id, topic_attributes: [:title, :body])
