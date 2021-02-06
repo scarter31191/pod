@@ -48,6 +48,13 @@
       <%= f.text_field :genre %>
     <div>
 
+    <br><br>
+
+    <div>
+      <%= f.label :topic, "Select Topic" %><br>
+      <%= f.collection_select :topic_id, Topic.all, :id, :title, prompt: true %>
+    <div>
+
     <div>
       <h3>Create Topic:</h3>
         <%= f.fields_for :topic, Topic.new do |topic_attributes|%>

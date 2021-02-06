@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :topics
-  resources :podcasts
+  resources :podcasts, only: [:index, :new]
+  
+  resources :topics do 
+    resources :podcasts, shallow: true
+  end
 
 
 

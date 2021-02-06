@@ -4,4 +4,6 @@ class Topic < ApplicationRecord
     has_many :podcasts
     has_many :users, through: :podcasts
 
+    # accepts_nested_attributes_for :podcasts
+
 end

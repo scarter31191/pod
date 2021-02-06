@@ -1,9 +1,13 @@
 class PodcastsController < ApplicationController
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
     # before_action :find_user, only: [:show, :edit, :update, :destroy, :create]
 
     def index
-        @podcasts = Podcast.all
+        if params[:topic_id] && @topic = Topic.find_by_id(params[:topic_id])
+            @podcasts = @topic.podcasts
+        else
+            @podcasts = Podcast.all
+        end
     end
 
     def new
@@ -25,6 +29,7 @@ class PodcastsController < ApplicationController
 
     def show
         @podcast = Podcast.find(params[:id])
+        # byebug
     end
 
     def edit

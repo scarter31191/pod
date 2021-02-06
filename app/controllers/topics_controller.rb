@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
     
     def index
+        # @podcast = Podcast.find_by_id(params[:podcast_id])
         @topics = Topic.all
     end
 
@@ -49,6 +50,6 @@ class TopicsController < ApplicationController
     private
 
     def topic_params
-        params.require(:topic).permit(:title, :body)
+        params.require(:topic).permit(:title, :body, :podcast_id)
       end
 end
