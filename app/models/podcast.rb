@@ -6,5 +6,6 @@ class Podcast < ApplicationRecord
     belongs_to :user
 
     accepts_nested_attributes_for :topic, reject_if: proc { |attributes| attributes['title'].blank? } 
-    
+
+    scope :order_by_title, -> { order(title: :asc) }    
 end

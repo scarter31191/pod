@@ -1,11 +1,7 @@
-<h1>Podcast's</h1>
+<h1>All Podcast's</h1>
 
 <ul>
-  <% @podcasts.each do |podcast| %>
-    <li>
-      <%= link_to podcast.title, podcast %>
-    </li>
-  <% end %>
+   <%= render @podcasts %>
 </ul><br>
 
 <%= link_to "New Podcast", new_podcast_path %>

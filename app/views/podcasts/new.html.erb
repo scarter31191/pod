@@ -1,61 +1,8 @@
-<% if @podcast.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@podcast.errors.count, "error") %>
-      prohibited this podcast from being saved:
-    </h2>
- 
-    <ul>
-    <% @podcast.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render "podcasts/errors" %>
 
-<%= display_nested_header%>
+<%= display_nested_header %>
 
-<%= form_for(@podcast) do |f| %>
-  
-  <ul>
-    <div>
-      <%= display_topic_fields(f) %>
-    </div>
-    <div>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-
-    <div>
-      <%= f.label :platform %><br>
-      <%= f.text_field :platform %>
-    <div>
-
-    <div>
-      <%= f.label :host %><br>
-      <%= f.text_field :host %>
-    <div>
-
-    <div>
-      <%= f.label :schedule %><br>
-      <%= f.datetime_local_field :schedule %>
-    <div>
-
-    <div>
-      <%= f.label :description %><br>
-      <%= f.text_area :description %>
-    <div>
-
-    <div>
-      <%= f.label :genre %><br>
-      <%= f.text_field :genre %>
-    <div>
-
-    <div>
-      <%= f.submit %>
-    </div>
-  </ul>
-<% end %>
+<%= render "podcasts/new_form"%>
 
 <li><%= link_to "All Podcasts", podcasts_path %></li>
 <%# <li><%= link_to "Home", user_path(@user) %>

@@ -1,0 +1,56 @@
+<h1>Edit Podcast</h1>
+
+<%= form_for(@podcast) do |f| %>
+
+  <ul>
+    <div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :platform %><br>
+      <%= f.text_field :platform %>
+    <div>
+
+    <div>
+      <%= f.label :host %><br>
+      <%= f.text_field :host %>
+    <div>
+
+    <div>
+      <%= f.label :schedule %><br>
+      <%= f.datetime_local_field :schedule %>
+    <div>
+
+    <div>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    <div>
+
+    <div>
+      <%= f.label :genre %><br>
+      <%= f.text_field :genre %>
+    <div>
+
+    <div>
+      <h3>Create Topic:</h3>
+        <%= f.fields_for :topic, @topic do |topic_attributes|%>
+        <div>
+          <%= topic_attributes.label :title, "Title:" %><br>
+          <%= topic_attributes.text_field :title %>
+        </div>
+
+        <div>
+          <%= topic_attributes.label :body, "Body:" %><br>
+          <%= topic_attributes.text_area :body %>
+        </div>
+
+        <% end %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </ul>
+<% end %>

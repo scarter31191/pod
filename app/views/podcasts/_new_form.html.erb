@@ -1,0 +1,45 @@
+<%= form_for(@podcast) do |f| %>
+  
+  <ul>
+    
+    <div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :platform %><br>
+      <%= f.text_field :platform %>
+    <div>
+
+    <div>
+      <%= f.label :host %><br>
+      <%= f.text_field :host %>
+    <div>
+
+    <div>
+      <%= f.label :schedule %><br>
+      <%= f.datetime_local_field :schedule %>
+    <div>
+
+    <div>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    <div>
+
+    <div>
+      <%= f.label :genre %><br>
+      <%= f.text_field :genre %>
+    <div>
+
+    <br><br>
+
+    <div>
+      <%= display_topic_fields(f) %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </ul>
+<% end %>

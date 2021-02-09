@@ -6,14 +6,14 @@ class PodcastsController < ApplicationController
         if params[:topic_id] && @topic = Topic.find_by_id(params[:topic_id])
             @podcasts = @topic.podcasts
         else
-            @podcasts = Podcast.all
+            @podcasts = Podcast.order_by_title
         end
     end
 
     def new
         if params[:topic_id] && @topic = Topic.find_by_id(params[:topic_id])
             @podcast = @topic.podcasts.build
-            byebug
+            # byebug
         else
             @podcast = Podcast.new
             @podcast.build_topic
@@ -22,7 +22,7 @@ class PodcastsController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug
         @podcast = Podcast.new(podcast_params)
         # @user = current_user
         @podcast = current_user.podcasts.build(podcast_params)
