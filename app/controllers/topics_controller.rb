@@ -1,8 +1,7 @@
 class TopicsController < ApplicationController
-    # before_action :redirect_if_not_logged_in
+    before_action :find_topic, :redirect_if_not_logged_in, only: [:show, :update, :edit, :destroy]
     
     def index
-        # @podcast = Podcast.find_by_id(params[:podcast_id])
         @topics = Topic.all
     end
 
@@ -21,15 +20,18 @@ class TopicsController < ApplicationController
     end
 
     def show
-        @topic = Topic.find(params[:id])
     end
 
     def edit
-        @topic = Topic.find(params[:id])
+        podcast = find_topic_user(@topic)
+        # byebug
+        if podcast[0].user.id != current_user.id
+            # byebug
+            redirect_to user_path(current_user)
+        end
     end
 
     def update
-        @topic = Topic.find(params[:id])
 
         if @topic.update(topic_params)
             redirect_to topic_path(@topic)
@@ -49,7 +51,29 @@ class TopicsController < ApplicationController
 
     private
 
+      def find_topic
+        @topic = Topic.find(params[:id])
+      end
+
     def topic_params
         params.require(:topic).permit(:title, :body, :podcast_id)
-      end
+    end
+
+    def find_topic_user(topic)
+        all_podcasts = topic.podcasts
+        all_podcasts.each do |pod|
+          users = []
+          user = pod.user.id
+          users << user
+          users.each do |user|
+            if user == current_user.id
+                # byebug
+             true
+            else
+             false
+            end
+          end
+        end
+    end
+
 end

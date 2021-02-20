@@ -35,16 +35,19 @@ class PodcastsController < ApplicationController
     end
 
     def show
-        @podcast = Podcast.find(params[:id])
+        # @podcast = Podcast.find(params[:id])
         # byebug
     end
 
     def edit
-        @podcast = Podcast.find(params[:id])
+        # @podcast = Podcast.find(params[:id])
+        if @podcast.user != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this pod!"
+        end
     end
 
     def update
-        @podcast = Podcast.find(params[:id])
+        # @podcast = Podcast.find(params[:id])
 
         if @podcast.update(podcast_params)
             redirect_to podcast_path(@podcast)

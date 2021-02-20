@@ -13,4 +13,12 @@ module ApplicationHelper
         redirect_to :root unless logged_in?
     end
 
+    def render_nav_bar
+        if logged_in?
+          render partial: 'layouts/logged_in'
+        else
+          render partial: 'layouts/logged_out'
+        end
+    end
+
 end
