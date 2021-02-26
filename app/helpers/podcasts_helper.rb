@@ -16,9 +16,4 @@ module PodcastsHelper
         end 
     end
 
-    # def redirect_if_not_owner
-    #     if @podcast.user != current_user
-    #         redirect_to user_path(current_user), alert: "You can't edit this podcast"
-    #     end
-    # end
 end

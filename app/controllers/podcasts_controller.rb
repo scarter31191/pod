@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
-    before_action :find_podcast, :redirect_if_not_logged_in, only: [:show, :update, :edit, :destroy]
+    before_action :redirect_if_not_logged_in
+    before_action :find_podcast, only: [:show, :update, :edit, :destroy]
     
 
     def index
