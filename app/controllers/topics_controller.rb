@@ -41,11 +41,15 @@ class TopicsController < ApplicationController
     end
 
     def destroy
-        @topic = Topic.find(params[:id])
-        @topic.destroy
-    
-        redirect_to topics_path
-      end
+        # byebug
+        # @topic = Topic.find(params[:id])
+        if @topic.users != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this pod!"
+        else
+            @topic.destroy
+            redirect_to topics_path
+        end
+    end
     
 
 

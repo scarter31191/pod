@@ -64,7 +64,7 @@ class PodcastsController < ApplicationController
         else
             @podcast.destroy
             redirect_to podcasts_path
-        end
+        end 
         
     
         
