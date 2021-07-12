@@ -8,4 +8,8 @@ class Topic < ApplicationRecord
 
     # accepts_nested_attributes_for :podcasts
 
+    def podcasts_count
+        podcasts.count
+    end
+
 end
