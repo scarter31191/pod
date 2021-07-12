@@ -58,10 +58,16 @@ class PodcastsController < ApplicationController
     end
 
     def destroy
-        @podcast = Podcast.find(params[:id])
-        @podcast.destroy
+        # @podcast = Podcast.find(params[:id])
+        if @podcast.user != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this pod!"
+        else
+            @podcast.destroy
+            redirect_to podcasts_path
+        end
+        
     
-        redirect_to podcasts_path
+        
     end
 
     private
